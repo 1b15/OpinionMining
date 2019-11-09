@@ -14,7 +14,7 @@ def get_challenges(pageNumber):
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
-    (pageNumber * 10 bis [pageNumber+1] * 10)
+    (pageNumber * 10 bis [pageNumber+1] * 10 - 1)
     """
     sortedIds = challengeLikes.groupby('Challenge').count().sort_values(by='User', ascending=False).iloc[pageNumber*10:(pageNumber+1)*10]
     challengelist = challenges.iloc[sortedIds.index.values]
@@ -22,6 +22,26 @@ def get_challenges(pageNumber):
     challengelist['Poster'] = users.iloc[challengelist['Poster']]['Name']
     print(challengelist)
     return list(challengelist.to_dict('index').values())
+
+def get_recipes(challenge_id, pageNumber):
+    """
+    Sortiert nach Likes:
+    Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
+    (pageNumber * 10 bis [pageNumber+1] * 10 - 1)
+    """
+    relevantRecipes = recipes[recipes['Challenge'] == challenge_id]
+    relevantLikes = recipesLikes[recipesLikes['recipes'].isin(relevantRecipes.index.values)]
+    sortedIds = relevantLikes.groupby('recipes').count().sort_values(by='User', ascending=False)
+    print("pre:", sortedIds)
+    sortedIds.append(relevantRecipes[~relevantRecipes.index.isin(relevantLikes['recipes'].values)])
+    print("post:", sortedIds)
+    #.iloc[pageNumber * 10:(pageNumber + 1) * 10]
+    print(sortedIds)
+    recipelist = recipes.iloc[sortedIds.index.values]
+    recipelist['Likes'] = sortedIds['User']
+    recipelist['Poster'] = users.iloc[recipelist['Poster']]['Name']
+    print(recipelist)
+    return list(recipelist.to_dict('index').values())
 
 def post_challenge(title, description, difficulty, category, poster):
     challenges.loc[len(challenges)] = [title, description, difficulty, category, poster]
@@ -33,4 +53,4 @@ def post_challengeLike(user_id, challenge_id):
     return True
 
 if __name__ == '__main__':
-    print(get_challenges(0))
+    print(get_recipes(1,0))
