@@ -10,7 +10,7 @@ def get_user_profile(user_id):
     user = users.iloc[user_id]
     return user['Name'], user['Score']
 
-def get_challenges(pageNumber):
+def get_challenges():
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
@@ -21,7 +21,7 @@ def get_challenges(pageNumber):
     #Challenges mit 0 Likes
     missingChallenges = challenges[~challenges.index.isin(challengeLikes.index.values)]
     missingIds = pd.DataFrame({'id': missingChallenges.index.values, 'User': [0] * len(missingChallenges)}).set_index('id')
-    sortedIds = pd.concat([sortedIds, missingIds])
+    sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
 
     challengelist = challenges.iloc[sortedIds.index.values]
     challengelist['Likes'] = sortedIds['User'].copy().astype(int)
@@ -29,7 +29,7 @@ def get_challenges(pageNumber):
     print(challengelist)
     return list(challengelist.to_dict('index').values())
 
-def get_recipes(challenge_id, pageNumber):
+def get_recipes(challenge_id):
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
@@ -43,7 +43,7 @@ def get_recipes(challenge_id, pageNumber):
     #Recipes mit 0 Likes
     missingRecipes = relevantRecipes[~relevantRecipes.index.isin(relevantLikes.index.values)]
     missingIds = pd.DataFrame({'id':missingRecipes.index.values, 'User':[0] * len(missingRecipes)}).set_index('id')
-    sortedIds = pd.concat([sortedIds, missingIds])
+    sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
 
     recipelist = recipes.iloc[sortedIds.index.values]
     recipelist['Likes'] = sortedIds['User'].copy().astype(int)
@@ -57,7 +57,7 @@ def post_challenge(title, description, difficulty, category, poster):
 
 def post_challengeLike(user_id, challenge_id):
     challengeLikes.loc[len(challengeLikes)] = [user_id, challenge_id]
-    users.iloc[user_id].Score += 1
+    user.iloc[user_id].Score += 1
     return True
 
 if __name__ == '__main__':
