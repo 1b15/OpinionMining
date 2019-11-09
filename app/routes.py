@@ -12,6 +12,7 @@ def index():
 @app.route('/challengePage', methods = ['GET'])
 def challengePage():
     user_id = login(request.remote_addr)
+    print(user_id)
     challengeList = get_challenges(user_id)
     return render_template('index.html', challengeList=challengeList)
 
