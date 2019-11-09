@@ -19,8 +19,8 @@ def test_text(test):
 
 @app.route('/challengePage/<pageNumber>', methods = ['GET'])
 def challengePage(pageNumber):
-    challengeList = get_challenges(pageNumber)
-    return render_template('index.html', challengeList=challengeList)
+    challengeList = get_challenges(int(pageNumber))
+    return render_template('challengeList.html', challengeList=challengeList)
 
 @app.route('/challenge', methods = ['POST','GET'])
 def challenge():
