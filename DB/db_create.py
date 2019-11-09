@@ -19,13 +19,28 @@ challenges['Category'] = [1, 0]
 challenges['Poster'] = [0, 1]
 
 recipe['id'] = [0, 1, 2, 3]
-recipe['Text'] = ['', '']
-recipe['Embed'] = ['', '']
+recipe['Text'] = ['Ich habe gerade eine tolle Torte gebacken, mit GURKEN!!!!',
+                  'Plätzchen und das habe ich mit Gurken gemacht!\n \n Rezept:\n20 Gurken\nPlätzchenteig',
+                  'Schau mal, ich habe die Challenges zerstört',
+                  'Ich und meine Famillie haben das hier gezaubert als ich desletzt in den Anden wandern war'
+                  ]
+recipe['Embed'] = ['https://www.twitch.tv/namis_world/clip/SplendidBraveBarracudaOneHand',
+                   'https://www.twitch.tv/kupferfuchs/clip/DepressedHotMilkTwitchRPG',
+                   'https://imgur.com/r/Kochen/HdP1Pfl',
+                   'https://imgur.com/r/Kochen/dsQ6xOn'
+                   ]
 recipe['Challenge'] = [0, 0, 1, 1]
 recipe['Poster'] = [0, 1, 0, 1]
 
 challengeLikes['User'] = [0, 1, 1]
 challengeLikes['Challenge'] = [1, 0, 1]
 
-recipeLikes['User'] = []
-recipeLikes['Recipe'] = []
+recipeLikes['User'] = [0, 0]
+recipeLikes['Recipe'] = [0, 1]
+
+print(pd.DataFrame.from_dict(users))
+print(pd.DataFrame.from_dict(challenges))
+print(pd.DataFrame.from_dict(recipe))
+print(pd.DataFrame.from_dict(challengeLikes))
+print(pd.DataFrame.from_dict(recipeLikes))
+pd.DataFrame.to_csv(pd.DataFrame.from_dict(users), './users.csv')
