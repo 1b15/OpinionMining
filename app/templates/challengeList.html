@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 {% for challenge in challengeList %}
-    <div class="row mt-3">
-        <div class="col-1 offset-1 mr-2 mt-3" >
+<div class="row mt-3">
+    <div class="col-1 offset-1 mr-2 mt-3" >
+        <div class="row justify-content-center">
+            <img src="/static/img/HeartLike.svg" style="width:2em; height:2em;">
+        </div>
+        <div class="row justify-content-center">
             {{challenge.Likes}}
         </div>
-        <div class="col-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-5">
-                            {{challenge.Poster}}
-                        </div>
-                        <div class="col-5 offset-2">
-                            Icon
-                        </div>
-                    </div>
-                    <h5 class="text-left">
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between ml-1">
+                    <h4 class="text-left">
                         {{challenge.Title}}
+                    </h4>
+                    <h5>
+                        #Teilnehmer
                     </h5>
+                </div>
+                <div class="row ml-1">
+                    <div class="col-1">
+                        <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                    </div>
+                    <div class="col-5">
+                        {{challenge.Poster}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endfor %}
