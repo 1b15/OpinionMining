@@ -27,5 +27,10 @@ def post_challenge(title, description, difficulty, category, poster):
     challenges.loc[len(challenges)] = [title, description, difficulty, category, poster]
     return True
 
+def post_challengeLike(user_id, challenge_id):
+    challengeLikes.loc[len(challengeLikes)] = [user_id, challenge_id]
+    user.iloc[user_id].Score += 1
+    return True
+
 if __name__ == '__main__':
     print(get_challenges(0))
