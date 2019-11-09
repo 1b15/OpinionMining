@@ -10,12 +10,24 @@ def get_user_profile(user_id):
     user = users.iloc[user_id]
     return user['Name'], user['Score']
 
+def get_challenge(challenge_id):
+    """
+    Get Info about specific challenge
+    """
+    chal = challenges.iloc[challenge_id].to_dict()
+    chal['Likes'] = len(challengeLikes[challengeLikes['Challenge'] == challenge_id])
+    return chal
+
 def get_challenges():
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
     (pageNumber * 10 bis [pageNumber+1] * 10 - 1)
     """
+    counter = pd.DataFrame({'id':challenges.index.values, 'Count':[0]*len(challenges.index.values)}).set_index('id')
+    countIds = recipes.groupby('Challenge').count()
+    counter.at[countIds.index.values, 'Count'] = countIds['Text']
+
     sortedIds = challengeLikes.groupby('Challenge').count().sort_values(by='User', ascending=False)
 
     #Challenges mit 0 Likes
@@ -26,8 +38,10 @@ def get_challenges():
     challengelist = challenges.iloc[sortedIds.index.values]
     challengelist['Likes'] = sortedIds['User'].copy().astype(int)
     challengelist['Poster'] = [users.iloc[x]['Name'] for x in challengelist['Poster']]
-    print(challengelist)
-    return list(challengelist.to_dict('index').values())
+    challengelist['Counter'] = counter['Count']
+
+    dict = challengelist.to_dict('index')
+    return [{**x, 'id':x1} for (x1,x) in zip(dict.keys(), dict.values())]
 
 def get_recipes(challenge_id):
     """
@@ -49,7 +63,8 @@ def get_recipes(challenge_id):
     recipelist['Likes'] = sortedIds['User'].copy().astype(int)
     recipelist['Poster'] = [users.iloc[x]['Name'] for x in recipelist['Poster']]
     print(recipelist)
-    return list(recipelist.to_dict('index').values())
+    dict = recipelist.to_dict('index')
+    return [{**x, 'id': x1} for (x1, x) in zip(dict.keys(), dict.values())]
 
 def post_challenge(title, description, difficulty, category, poster):
     challenges.loc[len(challenges)] = [title, description, difficulty, category, poster]
@@ -61,8 +76,6 @@ def post_challengeLike(user_id, challenge_id):
     return True
 
 if __name__ == '__main__':
-    print(get_recipes(0, 0))
-    print('----------')
-    print(get_recipes(1, 0))
-    print('----------')
-    print(get_challenges(0))
+    #print(get_recipes(0))
+    #print(get_challenge(46))
+    print(get_challenges())
