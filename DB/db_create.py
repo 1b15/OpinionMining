@@ -55,6 +55,4 @@ if __name__ == '__main__':
     categories = {'Backen': 0, 'Dessert': 1, 'Kochen': 2}
     if not (os.path.exists('users.csv') and os.path.exists('recipesLikes.csv')):
         generate_csv()
-    df = pd.read_csv('users.csv').set_index('id')
-    print(df)
     
