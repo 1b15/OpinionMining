@@ -11,7 +11,7 @@ def index():
 
 @app.route('/challengePage', methods = ['GET'])
 def challengePage():
-    challengeList = get_challenges(int(pageNumber))
+    challengeList = get_challenges()
     return render_template('challengeList.html', challengeList=challengeList)
 
 @app.route('/recipePage/<challenge_id>', methods = ['GET'])
