@@ -1,11 +1,11 @@
 import pandas as pd
 
-users = pd.read_csv('app/DB/users.csv').set_index('id')
-challenges = pd.read_csv('app/DB/challenges.csv').set_index('id')
-recipes = pd.read_csv('app/DB/recipes.csv').set_index('id')
-challengeLikes = pd.read_csv('app/DB/challengeLikes.csv')
-recipesLikes = pd.read_csv('app/DB/recipesLikes.csv')
-login = pd.read_csv('app/DB/login.csv').set_index('id')
+users = pd.read_csv('app/DB/users.csv', escapechar='\\').set_index('id')
+challenges = pd.read_csv('app/DB/challenges.csv', escapechar='\\').set_index('id')
+recipes = pd.read_csv('app/DB/recipes.csv', escapechar='\\').set_index('id')
+challengeLikes = pd.read_csv('app/DB/challengeLikes.csv', escapechar='\\')
+recipesLikes = pd.read_csv('app/DB/recipesLikes.csv', escapechar='\\')
+login = pd.read_csv('app/DB/login.csv', escapechar='\\').set_index('id')
 
 def login(user_ip):
     """
@@ -103,6 +103,11 @@ def post_challenge(title, description, difficulty, category, poster):
 
 def post_challengeLike(user_id, challenge_id):
     challengeLikes.loc[len(challengeLikes)] = [user_id, challenge_id]
+    users.iloc[user_id].Score += 1
+    return True
+
+def post_recipeLike(user_id, recipe_id):
+    recipesLikes.loc[len(recipesLikes)] = [user_id, recipe_id]
     users.iloc[user_id].Score += 1
     return True
 
