@@ -84,7 +84,7 @@ def get_recipes(user_id, challenge_id):
     liked.at[LikeIds, 'Liked'] = 1
 
     #Recipes mit 0 Likes
-    missingRecipes = relevantRecipes[~relevantRecipes.index.isin(relevantLikes.index.values)]
+    missingRecipes = relevantRecipes[~relevantRecipes.index.isin(relevantLikes['recipes'])]
     missingIds = pd.DataFrame({'id':missingRecipes.index.values, 'User':[0] * len(missingRecipes)}).set_index('id')
     sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
 
