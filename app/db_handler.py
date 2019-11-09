@@ -27,6 +27,7 @@ def get_challenge(user_id, challenge_id):
     Get Info about specific challenge
     """
     chal = challenges.iloc[challenge_id].to_dict()
+    chal['Poster'] = users.iloc[chal['Poster']]['Name']
     chal['Likes'] = len(challengeLikes[challengeLikes['Challenge'] == challenge_id])
     chal['Liked'] = 0
     if challenge_id in challengeLikes[challengeLikes['User'] == user_id].values:
