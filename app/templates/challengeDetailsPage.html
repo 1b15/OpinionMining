@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Challenges<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/index">Challenges<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/profile">Profil</a>
@@ -34,64 +34,101 @@
             <img src="/static/img/Logo.svg" width="200" height="60" class="d-inline-block align-top" alt="">
         </a>
     </nav>
-    <div class="card col-10 offset-1 mx-5 my-2 Challenge">
-        <div class="row mt-3 card-title">
-            <div class="col-11 mx-4">
-                <div class="card">
-                    <div class="row card-body">
-                        <div class="col-2">
-                            <div class="row justify-content-center">
-                                <img src="/static/img/HeartLike.svg" style="width:2em; height:2em;">
-                            </div>
-                            <div class="row justify-content-center">
-                                    {{challenge.Likes}}
-                            </div>
-                            <div class="row justify-content-center">
-                                <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
-                            </div>
-                            <div class="row justify-content-center">
-                                {{challenge.Poster}}
-                            </div>
-                        </div>
-                        <div class="col-9 offset-1">
-                            <div class="row">
-                                <h3 class="text-left">{{challenge.Title}}</h3>
-                            </div>
-                            <div class="row text-left">
-                                {{challenge.Description}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-11 mx-5 my-4">
+        <div class="row">
+            <div class="col-1 justify-content-center">
+            <a class="navbar-brand" onclick="history.back()">
+                <img onmouseover="hoverBackArrow(this);" onmouseout="unhoverBackArrow(this);"src="/static/img/leftArrowEmpty.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
             </div>
-        </div>
-        <div class="card-body col-10 offset-1 recipe-list">
-            {% for recipe in recipeList %}
-            <div class="card mx-4">
-                <div class="card-body row">
-                    <div class="col-2">
+            <div class="card col-10 ">
+                <div class="row card-body">
+                    <div class="col-1">
                         <div class="row justify-content-center">
-                            <img src="/static/img/HeartLike.svg" style="width:2em; height:2em;">
+                            <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
                         </div>
                         <div class="row justify-content-center">
-                                {{recipe.Likes}}
+                                {{challenge.Likes}}
                         </div>
                         <div class="row justify-content-center">
                             <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
                         </div>
                         <div class="row justify-content-center">
-                            {{recipe.Poster}}
+                            {{challenge.Poster}}
                         </div>
                     </div>
-                    <div class="col-4 recipe-picture">
-                        <img src="/static/img/catCake.jpg" style="width:100%;height:100%;max-width:9em;max-height:9em;">
+                    <div class="col-10">
+                        <div class="row">
+                            <h3 class="text-left">{{challenge.Title}}</h3>
+                        </div>
+                        <div class="row text-left">
+                            {{challenge.Description}}
+                        </div>
                     </div>
-                    <div class="col-6 recipe-description">
-                        {{recipe.Text}}
+                    <div class="col-1">
+                        <div class="row justify-content-center">
+                            <img src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                        </div>
+                    </div>
+                    <div class="col-1 offset-11" style="padding:1.25rem">
+                        <div class="row justify-content-center">
+                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                                <img src="/static/img/AddButton.svg" style="width:2em; height:2em;">
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="card-body col-9 offset-2 recipe-list p-0">
+                {% for recipe in recipeList %}
+                <div class="card mt-3">
+                    <div class="card-body row">
+                        <div class="col-2">
+                            <div class="row justify-content-center">
+                                <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                            </div>
+                            <div class="row justify-content-center">
+                                    {{recipe.Likes}}
+                            </div>
+                            <div class="row justify-content-center">
+                                <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                            </div>
+                            <div class="row justify-content-center">
+                                {{recipe.Poster}}
+                            </div>
+                        </div>
+                        <div class="col-4 recipe-picture">
+                            <img src="/static/img/catCake.jpg" style="width:100%;height:100%;max-width:9em;max-height:9em;">
+                        </div>
+                        <div class="col-6 recipe-description">
+                            {{recipe.Text}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
         </div>
     </div>
     <!-- JavaScript Here-->

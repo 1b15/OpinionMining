@@ -27,7 +27,6 @@ def challenge():
         print(req_data)
     return render_template('index.html')
 
-@app.route('/challengeDetailsPage', methods = ['GET'])
-def challengeDetailsPage():
-    return render_template('challengeDetailsPage.html')
-
+@app.route('/vote', methods = ['GET'])
+def vote():
+    return render_template('vote.html')
