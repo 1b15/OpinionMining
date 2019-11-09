@@ -5,17 +5,17 @@ challenges = pd.read_csv('app/DB/challenges.csv', escapechar='\\').set_index('id
 recipes = pd.read_csv('app/DB/recipes.csv', escapechar='\\').set_index('id')
 challengeLikes = pd.read_csv('app/DB/challengeLikes.csv', escapechar='\\')
 recipesLikes = pd.read_csv('app/DB/recipesLikes.csv', escapechar='\\')
-login = pd.read_csv('app/DB/login.csv', escapechar='\\').set_index('id')
+loginData = pd.read_csv('app/DB/login.csv', escapechar='\\')
 
 def login(user_ip):
     """
     Get saved user_id to ip or create new link
     """
-    if user_ip in login['ip'].to_list():
-        return login[login['ip'] == user_ip, 'ip']
+    if user_ip in loginData['ip'].to_list():
+        return loginData[login['ip'] == user_ip, 'ip']
     else:
-        user_id = login['id'].max() + 1
-        login.loc[len(login)] = [user_id, user_ip]
+        user_id = loginData['id'].max() + 1
+        loginData.loc[len(loginData)] = [user_id,user_ip]
         return user_ip
 
 def get_user_profile(user_id):

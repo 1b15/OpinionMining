@@ -1,18 +1,16 @@
+import sys
 from app import app
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 
 from app.db_handler import get_user_profile, post_challenge, get_challenges, get_recipes, get_challenge, login
 
-@app.route('/')
-@app.route('/index', methods = ['GET'])
-def index():
-    challengeList = get_challenges()
-    return render_template('index.html', challengeList=challengeList)
+@app.route('/', methods = ['GET'])
+def weiter():
+    return redirect(url_for('challengePage'))
 
 @app.route('/challengePage', methods = ['GET'])
 def challengePage():
     user_id = login(request.remote_addr)
-    print(user_id)
     challengeList = get_challenges(user_id)
     return render_template('index.html', challengeList=challengeList)
 
