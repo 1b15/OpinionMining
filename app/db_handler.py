@@ -12,7 +12,7 @@ def login(user_ip):
     Get saved user_id to ip or create new link
     """
     if user_ip in loginData['ip'].to_list():
-        return loginData[loginData['ip'] == user_ip]['ip']
+        return loginData[loginData['ip'] == user_ip]['ip'].item()
     else:
         user_id = loginData['id'].max() + 1
         loginData.loc[len(loginData)] = [user_id, user_ip]
