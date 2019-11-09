@@ -29,204 +29,30 @@
         <input id="data2">
         <button id="submitButton" name="button"> Submit me senpai</button>
     <div id="challengeList">
+        {% for challenge in challengeList %}
         <div class="row mt-3">
             <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
+                {{challenge.Likes}}
             </div>
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
-                                User
+                                {{challenge.Poster}}
                             </div>
                             <div class="col-5 offset-2">
                                 Icon
                             </div>
                         </div>
                         <h5 class="text-left">
-                            Dies ist ein Titel
+                            {{challenge.Title}}
                         </h5>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-1 offset-1 mr-2 mt-3" >
-                Likes
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                User
-                            </div>
-                            <div class="col-5 offset-2">
-                                Icon
-                            </div>
-                        </div>
-                        <h5 class="text-left">
-                            Dies ist ein Titel
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     </main>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark mt-10" style="background-color: #17469d;">

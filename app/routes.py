@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, request
 
-from app.db_handler import get_user_profile, post_challenge
+from app.db_handler import get_user_profile, post_challenge, get_challenges
 
 @app.route('/')
 @app.route('/index', methods = ['POST','GET'])
@@ -16,6 +16,11 @@ def index():
 def test_text(test):
     print(test)
     return True
+
+@app.route('/challengePage/<pageNumber>', methods = ['GET'])
+def challengePage(pageNumber):
+    challengeList = get_challenges(int(pageNumber))
+    return render_template('challengeList.html', challengeList=challengeList)
 
 @app.route('/challenge', methods = ['POST','GET'])
 def challenge():

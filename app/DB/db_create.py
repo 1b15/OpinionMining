@@ -11,6 +11,8 @@ def generate_csv():
     users['id'] = [0, 1]
     users['Name'] = ['HansEntertainment', 'Jukamala']
     users['Score'] = [0, 0]
+    users['Age'] = [20, 19]
+    users['Gender'] = ['male', 'female']
 
     challenges['id'] = [0, 1]
     challenges['Title'] = ['Dessert mit Gurke', 'Schokokuchen mit wenig Kalorien']
