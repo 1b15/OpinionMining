@@ -1,5 +1,5 @@
 id,Text,Embed,Challenge,Poster
-0, Roma-Tomaten koscheres Salz lila Zwiebel Jalapeno-Chilischoten Limette gehackter Koriander  ,0.0,82,140
+0, Roma-Tomaten koscheres Salz lila Zwiebel Jalapeno-Chilischoten Limette gehackter Koriander  ,0.0,46,140
 1, Olivenöl Zwiebeln zerdrückten Knoblauch getrockneter Oregano grüne Zwiebeln weißer Zucker getrocknetes Basilikum gewürfelte Tomaten  ,0.0,30,71
 2, Eiswürfel Sprudelwasser weißer Rum Limette turbinado  ,0.0,66,34
 3, Kohlgemüse natives Olivenöl extra Schinken Sprunggelenk Hühnerbrühe Apfelwein frisch gemahlener Pfeffer Chilipulver Lorbeerblätter Salz- Rippe hellbrauner Zucker große Knoblauchzehen Cayenne Pfeffer Zwiebeln  ,0.0,35,111
@@ -8,7 +8,7 @@ id,Text,Embed,Challenge,Poster
 6, Bockshornkleeblätter Olivenöl Knoblauch schwarze Senfkörner gemahlener Kreuzkümmel amchur Limettenspalten Schalotten Koriander Zucker kleine Kartoffeln grüne Chilis gehackter Koriander Kurkuma frische Ingwerwurzel Salz- Rampen  ,0.0,25,83
 7, Olivenöl Salz- mittelgroße Garnelen Pfeffer Knoblauch gehackter Koriander Jalapeno-Chilischoten glatte Petersilie Rock Steak Weißweinessig Meersalz Lorbeerblatt Chorizo-Wurst  ,0.0,118,162
 8, Frühlingszwiebeln Frischkäse geriebener Cheddar-Käse Cayenne Pfeffer Chilipulver Knoblauchzehen Black Eyed Peas Tortilla-Chips  ,0.0,30,156
-9, Kochspray Salz- schwarzer Pfeffer Yukon Gold Kartoffeln fettarme saure Sahne Lauch Olivenöl 1% fettarme Milch  ,0.0,87,52
+9, Kochspray Salz- schwarzer Pfeffer Yukon Gold Kartoffeln fettarme saure Sahne Lauch Olivenöl 1% fettarme Milch  ,0.0,46,52
 10, Burgerbrötchen frischer Koriander Chilipulver Knoblauchzehen Panko Brotkrumen Kichererbsenmehl Pfeffer Sriracha Kichererbsen Möhren gemahlener Leinsamen Sojasauce Olivenöl Salz- Zitronensaft Grüns Spinat Curry Pulver Tahini Schalotten Zwiebeln gemahlener Kreuzkümmel  ,0.0,67,140
 11, zerkleinerte Tomaten Knoblauch frischer Rosmarin gemahlener schwarzer Pfeffer Zwiebeln Olivenöl Schweinelende ohne Knochen koscheres Salz Pappardelle  ,0.0,97,138
 12, gemahlener Zimt frischer Koriander Chilipulver gemahlener Koriander koscheres Salz gemahlener schwarzer Pfeffer Knoblauch Pflaumentomaten Avocado Limettensaft flank steak Salz- gemahlener Kreuzkümmel schwarzer Pfeffer Olivenöl zerkleinerte rote Pfefferflocken Zwiebeln  ,0.0,91,0
@@ -27,8 +27,8 @@ id,Text,Embed,Challenge,Poster
 25, schwarzer Pfeffer Schalotten Maismehl Cayenne Pfeffer Zwiebeln Knoblauchpaste Milch Butter Salz- Zitronensaft Wasser Chilipulver Tomatensoße Öl gemahlener Kreuzkümmel Hühnchen ohne Knochen ohne Haut Oberschenkel Garam Masala doppelte Sahne natürlicher Joghurt Lorbeerblatt  ,0.0,71,154
 26, Semmelbrösel ungesalzene Butter Zwiebelpulver Curry natriumarme Rinderbrühe Pickapeppa-Sauce Curry Pulver Lorbeerblätter Knoblauch Cayenne Pfeffer kaltes Wasser Pfeffer Große Eier natives Olivenöl extra gelbe Zwiebel Piment Weißweinessig koscheres Salz frischer Thymian Worcestersauce Allzweckmehl Rinderhack  ,0.0,36,147
 27, Kristallzucker Allzweckmehl Gemüsefett Backpulver Milch Salz-  ,0.0,23,21
-28, Griechischer Joghurt Zitronenquark Puderzucker Himbeeren  ,0.0,79,1
-29, Top Round Steak Pflanzenöl Shiitake Sojasauce frischer Spargel grüne Zwiebeln  ,0.0,56,30
+28, Griechischer Joghurt Zitronenquark Puderzucker Himbeeren  ,0.0,46,1
+29, Top Round Steak Pflanzenöl Shiitake Sojasauce frischer Spargel grüne Zwiebeln  ,0.0,46,30
 30, Chilipulver zerkleinerte rote Pfefferflocken Knoblauchpulver Meersalz gemahlener Kreuzkümmel Zwiebelpulver getrockneter Oregano gemahlener schwarzer Pfeffer Paprika  ,0.0,74,24
 31, Tomaten roter Pfeffer Olivenöl Italienisches Brot Balsamico Essig Zwiebeln frischer Basilikum Knoblauch  ,0.0,58,5
 32, Wursthüllen gemahlener schwarzer Pfeffer Knoblauch Honig geriebener Parmesankäse geriebener Mozzarella koscheres Salz geröstete rote Paprika Penne Olivenöl zerkleinerte rote Pfefferflocken  ,0.0,111,110
@@ -60,7 +60,7 @@ id,Text,Embed,Challenge,Poster
 58, Olivenöl lila Zwiebel frische Ananas Schweinefleisch Poblano-Paprika Mais-Tortillas Cheddar-Käse gemahlener schwarzer Pfeffer Salz- Eisbergsalat Limette Jalapeno-Chilischoten gehackter Koriander frisch  ,0.0,63,132
 59, geschmolzene Butter Matcha Grüntee-Pulver weißer Zucker Milch Allzweckmehl Eier Salz- Backpulver gehackte Walnüsse  ,0.0,118,55
 60, Hühnerbrühe Hühnerbrust scharfe Soße rote Paprika Kartoffeln Speck Knoblauchzehen frische Petersilie andouille wurst cajun Gewürz Erdnussöl Sellerie gemahlener roter Pfeffer Allzweckmehl Garnele Zwiebeln  ,0.0,22,53
-61, gehackte Tomaten frischer Basilikum Knoblauch natives Olivenöl extra koscheres Salz glatte Petersilie  ,0.0,70,170
+61, gehackte Tomaten frischer Basilikum Knoblauch natives Olivenöl extra koscheres Salz glatte Petersilie  ,0.0,46,170
 62, Mehl gemahlener Pfeffer Salz- Tomaten gemahlener schwarzer Pfeffer Thymian Eier grüne Tomaten gelbes Weizenmehl Milch Pflanzenöl  ,0.0,30,94
 63, Lager Curry Pulver schwarzer Pfeffer geknackt gehacktes Rindfleisch Zwiebeln einfaches Mehl Semmelbrösel Butter Knoblauch Sellerie kaltes Wasser Kurkuma getrockneter Thymian Ingwer Öl Tomaten Wasser Paprika Salz- Peperoni  ,0.0,72,183
 64, Kurkuma Olivenöl Zitrone Safran Tomatenmark Pfeffer Mehl Kichererbsen Hühnerbrühe warmes Wasser frischer Ingwer Salz- Tomaten frischer Koriander Schalotten frische Petersilie  ,0.0,107,120
@@ -69,7 +69,7 @@ id,Text,Embed,Challenge,Poster
 67, Babyspinatblätter Naan ungesalzene Butter gehackter Knoblauch Wasser große Garnelen Tomaten Salz-  ,0.0,45,10
 68, große Eier Serrano-Schinken Manchego-Käse Butter dijon Senf Sauerteig membrillo  ,0.0,22,117
 69, Zucker lo mein Nudeln Salz- Hühnersuppe milde Sojasauce flank steak Bohnensprossen getrocknete schwarze Pilze Pfeffer Schnittlauch Austernsauce dunkle Sojasoße Erdnüsse Sesamöl Kohl  ,0.0,16,158
-70, Zucker Allzweckmehl Pflanzenöl weißes Maismehl Backpulver Zwiebeln Speck tropft Buttermilch  ,0.0,111,72
+70, Zucker Allzweckmehl Pflanzenöl weißes Maismehl Backpulver Zwiebeln Speck tropft Buttermilch  ,0.0,46,72
 71, Italienische Petersilienblätter Walnüsse scharfe rote Pfefferflocken natives Olivenöl extra frischer Zitronensaft Forellenfilet Knoblauchzehen Chipotle Chile feines Meersalz glatte Petersilie  ,0.0,54,147
 72, Jasminreis Knoblauch Schalotten Zucker Shiitake Gochujang Basis Bohnensprossen Top Round Steak Sesamsamen Reisessig Möhren Sojasauce Sesamöl Taiwanesischer Bok Choy  ,0.0,53,112
 73, große Eier Serrano-Schinken Manchego-Käse Butter dijon Senf Sauerteig membrillo  ,0.0,13,110
@@ -80,7 +80,7 @@ id,Text,Embed,Challenge,Poster
 78, Zitronengras große Knoblauchzehen Reis ungesüßte Kokosmilch frischer Ingwer Erdnusssoße spare Ribs Sesamöl Tamari Sojasauce goldbrauner Zucker Trockener Sherry kochendes Wasser  ,0.0,112,90
 79, Tomaten roter Pfeffer Olivenöl Italienisches Brot Balsamico Essig Zwiebeln frischer Basilikum Knoblauch  ,0.0,18,94
 80, Italienische Petersilienblätter Walnüsse scharfe rote Pfefferflocken natives Olivenöl extra frischer Zitronensaft Forellenfilet Knoblauchzehen Chipotle Chile feines Meersalz glatte Petersilie  ,0.0,116,109
-81, Zucker Salz- Fenchelknolle Wasser Zitronen-Olivenöl Grapefruitsaft  ,0.0,103,113
+81, Zucker Salz- Fenchelknolle Wasser Zitronen-Olivenöl Grapefruitsaft  ,0.0,46,113
 82, Kurkuma Gemüsebrühe Tomaten Garam Masala Naan rote Linsen rote Chilischoten Zwiebeln Spinat Süßkartoffeln  ,0.0,57,191
 83, Welsfilets gemahlener schwarzer Pfeffer Salz- getrockneter Thymian gemahlener roter Pfeffer Erdnussöl gelbes Weizenmehl Große Eier Allzweckmehl Knoblauchpulver Buttermilch  ,0.0,84,51
 84, Pizzakruste Pflaumentomaten Pesto teilentrahmter Mozzarella-Käse  ,0.0,77,34
