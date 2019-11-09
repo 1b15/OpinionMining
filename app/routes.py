@@ -4,6 +4,7 @@ from flask import render_template, request, redirect, url_for
 
 from app.db_handler import get_user_profile, post_challenge, get_challenges, get_recipes, get_challenge, login
 
+@app.route('/index')
 @app.route('/', methods = ['GET'])
 def weiter():
     return redirect(url_for('challengePage'))
