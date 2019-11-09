@@ -12,11 +12,11 @@ def login(user_ip):
     Get saved user_id to ip or create new link
     """
     if user_ip in loginData['ip'].to_list():
-        return loginData[login['ip'] == user_ip, 'ip']
+        return loginData[loginData['ip'] == user_ip]['ip']
     else:
         user_id = loginData['id'].max() + 1
-        loginData.loc[len(loginData)] = [user_id,user_ip]
-        return user_ip
+        loginData.loc[len(loginData)] = [user_id, user_ip]
+        return user_id
 
 def get_user_profile(user_id):
     user = users.iloc[user_id]
