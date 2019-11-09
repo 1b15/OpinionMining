@@ -7,6 +7,7 @@
 
     <title>Title</title>
 
+    <link rel="stylesheet" href="/static/stylesheet.css">
     <!-- awesome Font -->
     <script src="https://kit.fontawesome.com/7e5bd21c64.js" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
@@ -14,23 +15,24 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Challenges<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profil</a>
-          </li>
-        </ul>
-      </div>
+<body style="background-color: #e8e8e8">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Challenges<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profil</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand brand" href="#">
+            <img src="/static/img/Logo.svg" width="200" height="60" class="d-inline-block align-top" alt="">
+        </a>
     </nav>
     <div class="card col-10 offset-1 mx-5 my-2 Challenge">
         <div class="row mt-3 card-title">
