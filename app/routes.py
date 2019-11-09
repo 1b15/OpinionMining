@@ -27,3 +27,7 @@ def challenge():
         #test_text(**req_data)
     return render_template('index.html')
 
+@app.route('/challengeDetailsPage', methods = ['GET'])
+def challengeDetailsPage():
+    return render_template('challengeDetailsPage.html')
+
