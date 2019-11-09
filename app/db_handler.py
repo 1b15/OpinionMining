@@ -10,36 +10,44 @@ def get_user_profile(user_id):
     user = users.iloc[user_id]
     return user['Name'], user['Score']
 
-def get_challenges(pageNumber):
+def get_challenges():
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
     (pageNumber * 10 bis [pageNumber+1] * 10 - 1)
     """
-    sortedIds = challengeLikes.groupby('Challenge').count().sort_values(by='User', ascending=False).iloc[pageNumber*10:(pageNumber+1)*10]
+    sortedIds = challengeLikes.groupby('Challenge').count().sort_values(by='User', ascending=False)
+
+    #Challenges mit 0 Likes
+    missingChallenges = challenges[~challenges.index.isin(challengeLikes.index.values)]
+    missingIds = pd.DataFrame({'id': missingChallenges.index.values, 'User': [0] * len(missingChallenges)}).set_index('id')
+    sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
+
     challengelist = challenges.iloc[sortedIds.index.values]
-    challengelist['Likes'] = sortedIds['User']
-    challengelist['Poster'] = users.iloc[challengelist['Poster']]['Name']
+    challengelist['Likes'] = sortedIds['User'].copy().astype(int)
+    challengelist['Poster'] = [users.iloc[x]['Name'] for x in challengelist['Poster']]
     print(challengelist)
     return list(challengelist.to_dict('index').values())
 
-def get_recipes(challenge_id, pageNumber):
+def get_recipes(challenge_id):
     """
     Sortiert nach Likes:
     Gebe die 10 Einträge der Seite pageNumber zurückgegeben.
     (pageNumber * 10 bis [pageNumber+1] * 10 - 1)
     """
+    #Relevanten Daten betrachten
     relevantRecipes = recipes[recipes['Challenge'] == challenge_id]
     relevantLikes = recipesLikes[recipesLikes['recipes'].isin(relevantRecipes.index.values)]
     sortedIds = relevantLikes.groupby('recipes').count().sort_values(by='User', ascending=False)
-    print("pre:", sortedIds)
-    sortedIds.append(relevantRecipes[~relevantRecipes.index.isin(relevantLikes['recipes'].values)])
-    print("post:", sortedIds)
-    #.iloc[pageNumber * 10:(pageNumber + 1) * 10]
-    print(sortedIds)
+
+    #Recipes mit 0 Likes
+    missingRecipes = relevantRecipes[~relevantRecipes.index.isin(relevantLikes.index.values)]
+    missingIds = pd.DataFrame({'id':missingRecipes.index.values, 'User':[0] * len(missingRecipes)}).set_index('id')
+    sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
+
     recipelist = recipes.iloc[sortedIds.index.values]
-    recipelist['Likes'] = sortedIds['User']
-    recipelist['Poster'] = users.iloc[recipelist['Poster']]['Name']
+    recipelist['Likes'] = sortedIds['User'].copy().astype(int)
+    recipelist['Poster'] = [users.iloc[x]['Name'] for x in recipelist['Poster']]
     print(recipelist)
     return list(recipelist.to_dict('index').values())
 
@@ -53,4 +61,8 @@ def post_challengeLike(user_id, challenge_id):
     return True
 
 if __name__ == '__main__':
-    print(get_recipes(1,0))
+    print(get_recipes(0, 0))
+    print('----------')
+    print(get_recipes(1, 0))
+    print('----------')
+    print(get_challenges(0))
