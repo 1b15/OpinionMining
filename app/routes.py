@@ -52,12 +52,12 @@ def add_recipe(challenge_id):
 
     return jsonify(code='200')
 
-@approute('/profile', methods = ['GET'])
+@app.route('/profile', methods = ['GET'])
 def profile():
     user_id = login(request.remote_addr)
     profil = get_profile(user_id)
-    recipeList = get_userRecipess(user_id)
-    return render_template('profile.html', profil=profil, recipeList=recipeList)
+    recipeList = get_userRecipes(user_id)
+    return render_template('profile.html', challenge=challenge, recipeList=recipeList)
 
 @app.route('/vote', methods = ['GET'])
 def vote():

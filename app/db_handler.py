@@ -99,6 +99,29 @@ def get_recipes(user_id, challenge_id):
     dict = recipelist.to_dict('index')
     return [{**x, 'id': x1} for (x1, x) in zip(dict.keys(), dict.values())]
 
+def get_userRecipes(user_id):
+    relevantRecipes = recipes[recipes['Poster'] == user_id]
+    relevantLikes = recipesLikes[recipesLikes['recipes'].isin(relevantRecipes.index.values)]
+    sortedIds = relevantLikes.groupby('recipes').count().sort_values(by='User', ascending=False)
+
+    liked = pd.DataFrame({'id':relevantRecipes.index.values, 'Liked': [0] * len(relevantRecipes.index.values)}).set_index('id')
+    LikeIds = relevantLikes[relevantLikes['User'] == user_id]['recipes']
+    liked.at[LikeIds, 'Liked'] = 1
+
+    missingRecipes = relevantRecipes[~relevantRecipes.index.isin(relevantLikes['recipes'])]
+    missingIds = pd.DataFrame({'id':missingRecipes.index.values, 'User':[0] * len(missingRecipes)}).set_index('id')
+    sortedIds = pd.concat([sortedIds, missingIds])
+
+    recipelist = recipes.iloc[sortedIds.index.values]
+    recipelist['Likes'] = sortedIds['User'].copy().astype(int)
+    recipelist['Poster'] = [users.iloc[x]['Name'] for x in recipelist['Poster']]
+    recipelist['Liked'] = liked['Liked'].copy().astype(int)
+
+    print(recipelist)
+    dict = recipelist.to_dict('index')
+    return [{**x, 'id': x1} for (x1, x) in zip(dict.keys(), dict.values())]   
+
+
 def post_challenge(title, description, difficulty, category, poster_id):
     challenges.loc[len(challenges)] = [title, description, difficulty, category, poster_id]
     return True
@@ -130,6 +153,8 @@ def post_recipeLike(user_id, recipe_id):
     return True
 
 def get_profile(user_id):
+    userdict = users.iloc[user_id].to_dict()
+    return userdict
 
 if __name__ == '__main__':
     #print(get_recipes(0, 46))
