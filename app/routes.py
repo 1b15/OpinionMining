@@ -2,7 +2,7 @@ import sys
 from app import app
 from flask import render_template, request, redirect, url_for, jsonify
 
-from app.db_handler import get_user_profile, post_challenge, get_challenges, get_recipes, get_challenge, login
+from app.db_handler import get_user_profile, post_challenge, get_challenges, post_recipe, get_recipes, get_challenge, login
 
 @app.route('/index')
 @app.route('/', methods = ['GET'])
@@ -32,8 +32,9 @@ def challenge():
 @app.route('/recipe/<challenge_id>', methods = ['POST'])
 def add_recipe(challenge_id):
     if request.method == 'POST':
+        user_id = login(request.remote_addr)
         req_data = request.get_json()
-        #
+        post_recipe(req_data['text'], req_data['embed'], int(challenge_id), user_id)
         print(req_data)
     return jsonify(code='200')
 
