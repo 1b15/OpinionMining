@@ -1,6 +1,6 @@
 import sys
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 
 from app.db_handler import get_user_profile, post_challenge, get_challenges, get_recipes, get_challenge, login
 
@@ -22,12 +22,20 @@ def recipe(challenge_id):
     recipeList = get_recipes(user_id, int(challenge_id))
     return render_template('challengeDetailsPage.html', challenge=challenge, recipeList=recipeList)
 
-@app.route('/challenge', methods = ['POST','GET'])
+@app.route('/challenge', methods = ['POST'])
 def challenge():
     if request.method == 'POST':
         req_data = request.data
         print(req_data)
     return render_template('index.html')
+
+@app.route('/recipe/<challenge_id>', methods = ['POST'])
+def challenge(challenge_id):
+    if request.method == 'POST':
+        req_data = request.get_json()
+        #
+        print(req_data)
+    return jsonify(code='200')
 
 @app.route('/vote', methods = ['GET'])
 def vote():
