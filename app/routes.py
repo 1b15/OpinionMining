@@ -55,9 +55,9 @@ def add_recipe(challenge_id):
 @app.route('/profile', methods = ['GET'])
 def profile():
     user_id = login(request.remote_addr)
-    profil = get_profile(user_id)
+    profile = get_profile(user_id)
     recipeList = get_userRecipes(user_id)
-    return render_template('profile.html', challenge=challenge, recipeList=recipeList)
+    return render_template('profile.html', profile=profile, recipeList=recipeList)
 
 @app.route('/vote', methods = ['GET'])
 def vote():
