@@ -108,8 +108,14 @@ def post_recipe(text, embed, challenge_id, poster_id):
     return True
 
 def post_challengeLike(user_id, challenge_id):
-    challengeLikes.loc[len(challengeLikes)] = [user_id, challenge_id]
-    users.iloc[user_id].Score += 1
+    like = challengeLikes[(challengeLikes['Challenge'] == challenge_id)
+                          & (challengeLikes['User'] == user_id)]
+    if like.empty:
+        challengeLikes.loc[challengeLikes.index.values[-1]+1] = [user_id, challenge_id]
+        users.at[user_id, 'Score'] += 1
+    else:
+        challengeLikes.drop(like.index.values, inplace=True)
+        users.at[user_id, 'Score'] -= 1
     return True
 
 def post_recipeLike(user_id, recipe_id):
@@ -118,6 +124,7 @@ def post_recipeLike(user_id, recipe_id):
     return True
 
 if __name__ == '__main__':
-    print(get_recipes(0, 46))
-    print(get_challenge(0, 46))
-    print(get_challenges(0))
+    #print(get_recipes(0, 46))
+    #print(get_challenge(0, 46))
+    #print(get_challenges(0))
+    import pdb; pdb.set_trace()
