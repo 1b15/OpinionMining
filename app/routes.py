@@ -43,10 +43,12 @@ def challengeLike(challenge_id):
 def add_recipe(challenge_id):
     if request.method == 'POST':
 
-        image = request.files["image"] #image.fileename ->Name des Bildes
-        print(request.form['comment']) #Freitext
+        # Speichere Bild
+        image = request.files["image"]
+        image.save(os.path.join(app.root_path, 'static', 'img', image.filename))
 
-        image.save(os.path.join(app.root_path, 'static', 'img', image.filename)) #Speichere Bild ab
+        user_id = login(request.remote_addr)
+        post_recipe(request.form['comment'], image.filename, int(challenge_id), user_id)
 
     return jsonify(code='200')
 

@@ -12,7 +12,7 @@ def login(user_ip):
     Get saved user_id to ip or create new link
     """
     if user_ip in loginData['ip'].to_list():
-        return loginData[loginData['ip'] == user_ip]['ip'].item()
+        return loginData[loginData['ip'] == user_ip]['id'].item()
     else:
         user_id = loginData['id'].max() + 1
         loginData.loc[len(loginData)] = [user_id, user_ip]
@@ -104,7 +104,7 @@ def post_challenge(title, description, difficulty, category, poster_id):
     return True
 
 def post_recipe(text, embed, challenge_id, poster_id):
-    challenges.loc[len(recipes)] = [text, embed, challenge_id, poster_id]
+    recipes.loc[len(recipes)] = [text, embed, challenge_id, poster_id]
     return True
 
 def post_challengeLike(user_id, challenge_id):
