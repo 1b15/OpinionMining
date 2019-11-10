@@ -3,7 +3,7 @@ from app import app, APP_STATIC
 from flask import render_template, request, redirect, url_for, jsonify
 import os
 
-from app.db_handler import get_user_profile, post_challenge, get_challenges, get_recipes, get_challenge, login
+from app.db_handler import get_user_profile, post_challenge, get_challenges, post_recipe, get_recipes, get_challenge, login
 
 @app.route('/index')
 @app.route('/', methods = ['GET'])
@@ -30,6 +30,12 @@ def challenge():
         print(req_data)
     return render_template('index.html')
 
+@app.route('/challengeLike/<challenge_id>', methods = ['POST'])
+def challengeLike(challenge_id):
+    if request.method == 'POST':
+        #TODO
+    return jsonify(code='200')
+
 @app.route('/recipe/<challenge_id>', methods = ['POST'])
 def add_recipe(challenge_id):
     if request.method == 'POST':
@@ -43,16 +49,6 @@ def add_recipe(challenge_id):
 
 @app.route('/vote', methods = ['GET'])
 def vote():
-    return render_template('vote.html')
-
-@app.route("/uploadImage", methods=["POST"])
-def upload_image():
-    if request.files:
-        image = request.files["image"]
-        print(request.form['comment'])
-        image.save(os.path.join(app.root_path, 'static', 'img', image.filename))
-
-        print("Image saved")
-
-        return redirect('/')
-    return redirect(request.url)
+    user_id = login(request.remote_addr)
+    challengeList = get_challenges(user_id)
+    return render_template('vote.html', challengeList=challengeList)

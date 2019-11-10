@@ -98,8 +98,12 @@ def get_recipes(user_id, challenge_id):
     dict = recipelist.to_dict('index')
     return [{**x, 'id': x1} for (x1, x) in zip(dict.keys(), dict.values())]
 
-def post_challenge(title, description, difficulty, category, poster):
-    challenges.loc[len(challenges)] = [title, description, difficulty, category, poster]
+def post_challenge(title, description, difficulty, category, poster_id):
+    challenges.loc[len(challenges)] = [title, description, difficulty, category, poster_id]
+    return True
+
+def post_recipe(text, embed, challenge_id, poster_id):
+    challenges.loc[len(recipes)] = [text, embed, challenge_id, poster_id]
     return True
 
 def post_challengeLike(user_id, challenge_id):
