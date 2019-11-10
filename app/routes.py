@@ -29,6 +29,12 @@ def challenge():
         print(req_data)
     return render_template('index.html')
 
+@app.route('/challengeLike/<challenge_id>', methods = ['POST'])
+def challengeLike(challenge_id):
+    if request.method == 'POST':
+        #TODO
+    return jsonify(code='200')
+
 @app.route('/recipe/<challenge_id>', methods = ['POST'])
 def add_recipe(challenge_id):
     if request.method == 'POST':
