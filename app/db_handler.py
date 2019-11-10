@@ -12,7 +12,7 @@ def login(user_ip):
     Get saved user_id to ip or create new link
     """
     if user_ip in loginData['ip'].to_list():
-        return loginData[loginData['ip'] == user_ip]['ip'].item()
+        return loginData[loginData['ip'] == user_ip]['id'].item()
     else:
         user_id = loginData['id'].max() + 1
         loginData.loc[len(loginData)] = [user_id, user_ip]
@@ -104,7 +104,7 @@ def post_challenge(title, description, difficulty, category, poster_id):
     return True
 
 def post_recipe(text, embed, challenge_id, poster_id):
-    challenges.loc[len(recipes)] = [text, embed, challenge_id, poster_id]
+    recipes.loc[len(recipes)] = [text, embed, challenge_id, poster_id]
     return True
 
 def post_challengeLike(user_id, challenge_id):
@@ -119,9 +119,17 @@ def post_challengeLike(user_id, challenge_id):
     return True
 
 def post_recipeLike(user_id, recipe_id):
-    recipesLikes.loc[len(recipesLikes)] = [user_id, recipe_id]
-    users.iloc[user_id].Score += 1
+    like = recipesLikes[(recipesLikes['recipes'] == recipe_id)
+                          & (recipesLikes['User'] == user_id)]
+    if like.empty:
+        recipesLikes.loc[recipesLikes.index.values[-1]+1] = [user_id, recipe_id]
+        users.at[user_id, 'Score'] += 1
+    else:
+        recipesLikes.drop(like.index.values, inplace=True)
+        users.at[user_id, 'Score'] -= 1
     return True
+
+def get_profile(user_id):
 
 if __name__ == '__main__':
     #print(get_recipes(0, 46))
