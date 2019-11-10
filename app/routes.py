@@ -40,4 +40,6 @@ def add_recipe(challenge_id):
 
 @app.route('/vote', methods = ['GET'])
 def vote():
-    return render_template('vote.html')
+    user_id = login(request.remote_addr)
+    challengeList = get_challenges(user_id)
+    return render_template('vote.html', challengeList=challengeList)
