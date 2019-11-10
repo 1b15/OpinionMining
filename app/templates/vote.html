@@ -22,11 +22,12 @@
         </a>
     </nav>
     <div id="challengeList mx-4">
+        {% for challenge in challengeList %}
         <div class="row my-3">
             <div class="col-8 offset-2 card my-1">
                 <div class="row py-1 align-items-center">
                     <h5 class="col-9">
-                        Titel
+                        {{challenge.Title}}
                     </h5>
                     <a class=" col-1 navbar-brand" href="#">
                         <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
     <!-- JavaScript Here-->
 
