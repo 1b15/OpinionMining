@@ -129,6 +129,8 @@ def post_recipeLike(user_id, recipe_id):
         users.at[user_id, 'Score'] -= 1
     return True
 
+def get_profile(user_id):
+
 if __name__ == '__main__':
     #print(get_recipes(0, 46))
     #print(get_challenge(0, 46))

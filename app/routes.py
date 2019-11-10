@@ -5,7 +5,7 @@ import os
 
 from app.db_handler import get_user_profile, post_challenge, get_challenges, \
                            post_recipe, get_recipes, get_challenge, login, \
-                           post_challengeLike
+                           post_challengeLike, get_userRecipes, get_profile
 
 @app.route('/index')
 @app.route('/', methods = ['GET'])
@@ -51,6 +51,13 @@ def add_recipe(challenge_id):
         post_recipe(request.form['comment'], image.filename, int(challenge_id), user_id)
 
     return jsonify(code='200')
+
+@approute('/profile', methods = ['GET'])
+def profile():
+    user_id = login(request.remote_addr)
+    profil = get_profile(user_id)
+    recipeList = get_userRecipess(user_id)
+    return render_template('profile.html', profil=profil, recipeList=recipeList)
 
 @app.route('/vote', methods = ['GET'])
 def vote():
