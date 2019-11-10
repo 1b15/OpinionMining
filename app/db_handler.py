@@ -119,8 +119,14 @@ def post_challengeLike(user_id, challenge_id):
     return True
 
 def post_recipeLike(user_id, recipe_id):
-    recipesLikes.loc[len(recipesLikes)] = [user_id, recipe_id]
-    users.iloc[user_id].Score += 1
+    like = recipesLikes[(recipesLikes['recipes'] == recipe_id)
+                          & (recipesLikes['User'] == user_id)]
+    if like.empty:
+        recipesLikes.loc[recipesLikes.index.values[-1]+1] = [user_id, recipe_id]
+        users.at[user_id, 'Score'] += 1
+    else:
+        recipesLikes.drop(like.index.values, inplace=True)
+        users.at[user_id, 'Score'] -= 1
     return True
 
 if __name__ == '__main__':
