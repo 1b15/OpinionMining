@@ -3,7 +3,9 @@ from app import app, APP_STATIC
 from flask import render_template, request, redirect, url_for, jsonify
 import os
 
-from app.db_handler import get_user_profile, post_challenge, get_challenges, post_recipe, get_recipes, get_challenge, login
+from app.db_handler import get_user_profile, post_challenge, get_challenges, \
+                           post_recipe, get_recipes, get_challenge, login, \
+                           post_challengeLike
 
 @app.route('/index')
 @app.route('/', methods = ['GET'])
@@ -33,7 +35,8 @@ def challenge():
 @app.route('/challengeLike/<challenge_id>', methods = ['POST'])
 def challengeLike(challenge_id):
     if request.method == 'POST':
-        #TODO
+        user_id = login(request.remote_addr)
+        post_challengeLike(user_id, challenge_id)
     return jsonify(code='200')
 
 @app.route('/recipe/<challenge_id>', methods = ['POST'])
