@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <!-- awesome Font -->
+    <script src="https://kit.fontawesome.com/7e5bd21c64.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #e8e8e8">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Challenges<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profil</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand brand" href="#">
+            <img src="/static/img/Logo.svg" width="200" height="60" class="d-inline-block align-top" alt="">
+        </a>
+    </nav>
+    <div class="col-11 mx-5 my-4">
+        <div class="row">
+            <div class="col-1 justify-content-center">
+            <a class="navbar-brand" onclick="history.back()">
+                <img onmouseover="hoverBackArrow(this);" onmouseout="unhoverBackArrow(this);"src="/static/img/leftArrowEmpty.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
+            </div>
+            <div class="card col-10 ">
+                <div class="row card-body">
+                    <div class="col-1">
+                        <div class="row justify-content-center">
+                            {% if challenge.Liked == 1 %}
+                                <img onmouseover="hoverHeartLike(this);" onmouseout="hoverHeartLike(this);" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                            {% elif challenge.Liked == 0 %}
+                                <img onmouseover="hoverHeartLike(this);" onmouseout="hoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                            {% endif %}
+                        </div>
+                        <div class="row justify-content-center">
+                                {{challenge.Likes}}
+                        </div>
+                        <div class="row justify-content-center">
+                            <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                        </div>
+                        <div class="row justify-content-center">
+                            {{challenge.Poster}}
+                        </div>
+                    </div>
+                    {% if challenge.Sponsored == 1 %}
+                        <div class="col-9 ml-4">
+                    {% elif challenge.Sponsored == 0 %}
+                        <div class="col-10 ml-4">
+                    {%  endif %}
+                        <div class="row">
+                            <h3 class="text-left">{{challenge.Title}}</h3>
+                        </div>
+                        <div class="row text-left">
+                            {{challenge.Description}}
+                        </div>
+                    </div>
+                    {% if challenge.Sponsored == 1 %}
+                        <div class="col-1">
+                            <div class="row justify-content-center">
+                                <img src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                            </div>
+                        </div>
+                    {% endif%}
+                    <div class="col-1 offset-11" style="padding:1.25rem">
+                        <div class="row justify-content-center">
+                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                                <img src="/static/img/AddButton.svg" style="width:2em; height:2em;">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body col-9 offset-2 recipe-list p-0">
+                {% for recipe in recipeList %}
+                <div class="card mt-3">
+                    <div class="card-body row">
+                        <div class="col-2">
+                            <div class="row justify-content-center">
+                                {% if challenge.Liked == 1 %}
+                                    <input type="hidden" value="1" id="inputnr{{ challenge.id }}" >
+                                    <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                                {% elif challenge.Liked == 0 %}
+                                    <input type="hidden" value="0" id="inputnr{{ challenge.id }}" >
+                                    <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                                {% endif %}
+                            </div>
+                            <div class="row justify-content-center">
+                                    {{recipe.Likes}}
+                            </div>
+                            <div class="row justify-content-center">
+                                <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                            </div>
+                            <div class="row justify-content-center">
+                                {{recipe.Poster}}
+                            </div>
+                        </div>
+                        <div class="col-4 recipe-picture">
+                            <img src="/static/img/{{recipe.Embed}}" style="width:100%;height:100%;max-width:20em;max-height:20em;border-radius:13px;object-fit:cover;">
+                        </div>
+                        <div class="col-6 recipe-description">
+                            {{recipe.Text}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {{challenge.id}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rezept Erstellen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                        <form action="/recipe/{{challenge.id}}" method="POST" id="main" enctype="multipart/form-data">
+                            <input type="file" name="image" id="image">
+                          <hr>
+                        <div class="form-group">
+                          <label>Freitext eingeben</label>
+                            <div>
+                                <textarea placeholder="Hier Text eingeben" name="comment" style="width:25em;height:20em"></textarea>
+                            </div>
+                        </div>
+
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="FormButton" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Here-->
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/static/javascript/main.js"></script>
+    <script src="/static/javascript/Formfunction.js"></script>
+</body>
+</html>

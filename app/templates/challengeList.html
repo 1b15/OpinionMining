@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% for challenge in challengeList %}
+<div class="row mt-3">
+    <div class="col-1 offset-1 mr-2 mt-3" >
+        <div class="row justify-content-center">
+            {% if challenge.Liked == 1 %}
+                <input type="hidden" value="1" id="inputnr{{ challenge.id }}" >
+                <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+            {% elif challenge.Liked == 0 %}
+                <input type="hidden" value="0" id="inputnr{{ challenge.id }}" >
+                <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+            {% endif %}
+        </div>
+        <div class="row justify-content-center">
+            {{challenge.Likes}}
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between ml-1">
+                    <h4 class="text-left">
+                        {{challenge.Title}}
+                    </h4>
+                    <h5>
+                        #Teilnehmer
+                    </h5>
+                </div>
+                <div class="row ml-1">
+                    <div class="col-1">
+                        <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                    </div>
+                    <div class="col-5">
+                        {{challenge.Poster}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

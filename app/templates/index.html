@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <!-- awesome Font -->
+    <script src="https://kit.fontawesome.com/7e5bd21c64.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #e8e8e8">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Challenges<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profil</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand brand" href="#">
+            <img src="/static/img/Logo.svg" width="200" height="60" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="" href="#">
+            <img src="/static/img/AddButton.svg" width="30" height="30" class="d-inline-block align-top ml-auto mr-5" alt="">
+        </a>
+    </nav>
+    <div id="challengeList">
+        {% for challenge in challengeList %}
+        <div class="row mt-3">
+            <div class="col-1 offset-1 mr-2 mt-3" >
+                <div class="row justify-content-center">
+                    {% if challenge.Liked == 1 %}
+                        <input type="hidden" value="1" id="inputnr{{ challenge.id }}" >
+                        <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                    {% elif challenge.Liked == 0 %}
+                        <input type="hidden" value="0" id="inputnr{{ challenge.id }}" >
+                        <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                    {% endif %}
+                </div>
+                <div class="row justify-content-center">
+                    <p id="likeCount{{ challenge.id }}" >{{challenge.Likes}}</p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            {% if challenge.Sponsored == 1 %}
+                                <img class="col-1" src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                                <div class="col-10">
+                            {% elif challenge.Sponsored == 0 %}
+                               <div class="col-10 ml-3">
+                            {% endif %}
+                                <div class="row">
+                                    <a href="/recipePage/{{challenge.id}}">
+                                        <h4 class="text-left">
+                                            {{challenge.Title}}
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1">
+                                        <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                                    </div>
+                                    <div class="col-5">
+                                        {{challenge.Poster}}
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="col-1">
+                                #{{challenge.Counter}}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- JavaScript Here-->
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/static/javascript/main.js"></script>
+</body>
+</html>
