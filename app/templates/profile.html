@@ -41,33 +41,24 @@
                 <img onmouseover="hoverBackArrow(this);" onmouseout="unhoverBackArrow(this);"src="/static/img/leftArrowEmpty.svg" width="30" height="30" class="d-inline-block align-top" alt="">
             </a>
             </div>
-            <div class="card col-10 ">
+            <div class="card col-10 profil">
                 <div class="row card-body">
-                    <div class="col-1">
+                    <div class="col-2 ml-3">
                         <div class="row justify-content-center">
-                                {{profile.Score}}
-                        </div>
-                        <div class="row justify-content-center">
-                            <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                            <img src="/static/img/DefaultIcon.svg" style="width:5em;height:5em">
                         </div>
                         <div class="row justify-content-center">
                             {{profile.Name}}
                         </div>
                     </div>
-                        <div class="col-11">
-                        <div class="row">
-                            <h3 class="text-left">{{profile.Name}}</h3>
+                    <div class="col-8 ml-3 justify-content-center">
+                        <div class="row justify-content-center" style="width:4em">
+                            <img src="/static/img/HeartLikeFull.svg" style="width:4em; height:4em">
                         </div>
-                        <div class="row text-left">
-                            {{profile.Name}}
+                        <div class="row justify-content-center" style="width:4em">
+                            {{profile.Score}}
                         </div>
-                    </div>
-                    <div class="col-1 offset-11" style="padding:1.25rem">
-                        <div class="row justify-content-center">
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
-                                <img src="/static/img/AddButton.svg" style="width:2em; height:2em;">
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -79,20 +70,10 @@
                     <div class="card-body row">
                         <div class="col-2">
                             <div class="row justify-content-center">
-                                {% if recipeLiked == 1 %}
-                                    <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
-                                {% elif recipe.Liked == 0 %}
-                                    <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
-                                {% endif %}
+                                    <img src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
                             </div>
                             <div class="row justify-content-center">
                                     {{recipe.Likes}}
-                            </div>
-                            <div class="row justify-content-center">
-                                <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
-                            </div>
-                            <div class="row justify-content-center">
-                                {{recipe.Poster}}
                             </div>
                         </div>
                         <div class="col-4 recipe-picture">
