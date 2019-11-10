@@ -30,7 +30,7 @@ def challenge():
     return render_template('index.html')
 
 @app.route('/recipe/<challenge_id>', methods = ['POST'])
-def challenge(challenge_id):
+def add_recipe(challenge_id):
     if request.method == 'POST':
         req_data = request.get_json()
         #
