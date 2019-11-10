@@ -33,13 +33,20 @@
         <a class="navbar-brand brand" href="#">
             <img src="/static/img/Logo.svg" width="200" height="60" class="d-inline-block align-top" alt="">
         </a>
+        <a class="" href="#">
+            <img src="/static/img/AddButton.svg" width="30" height="30" class="d-inline-block align-top ml-auto mr-5" alt="">
+        </a>
     </nav>
     <div id="challengeList">
         {% for challenge in challengeList %}
         <div class="row mt-3">
             <div class="col-1 offset-1 mr-2 mt-3" >
                 <div class="row justify-content-center">
-                    <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                    {% if challenge.Liked == 1 %}
+                        <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                    {% elif challenge.Liked == 0 %}
+                        <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                    {% endif %}
                 </div>
                 <div class="row justify-content-center">
                     {{challenge.Likes}}
@@ -48,23 +55,32 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row justify-content-between ml-1">
-                            <a href="/recipePage/{{challenge.id}}">
-                                <h4 class="text-left">
-                                    {{challenge.Title}}
-                                </h4>
-                            </a>
-                            <h5>
+                        <div class="row justify-content-between">
+                            {% if challenge.Sponsored == 1 %}
+                                <img class="col-1" src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                                <div class="col-10">
+                            {% elif challenge.Sponsored == 0 %}
+                               <div class="col-10 ml-3">
+                            {% endif %}
+                                <div class="row">
+                                    <a href="/recipePage/{{challenge.id}}">
+                                        <h4 class="text-left">
+                                            {{challenge.Title}}
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1">
+                                        <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
+                                    </div>
+                                    <div class="col-5">
+                                        {{challenge.Poster}}
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="col-1">
                                 #{{challenge.Counter}}
                             </h5>
-                        </div>
-                        <div class="row ml-1">
-                            <div class="col-1">
-                                <img src="/static/img/DefaultIcon.svg" style="width:1.5em;height:1.5em">
-                            </div>
-                            <div class="col-5">
-                                {{challenge.Poster}}
-                            </div>
                         </div>
                     </div>
                 </div>

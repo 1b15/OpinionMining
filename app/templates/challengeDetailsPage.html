@@ -45,7 +45,11 @@
                 <div class="row card-body">
                     <div class="col-1">
                         <div class="row justify-content-center">
-                            <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                            {% if challenge.Liked == 1 %}
+                                <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                            {% elif challenge.Liked == 0 %}
+                                <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                            {% endif %}
                         </div>
                         <div class="row justify-content-center">
                                 {{challenge.Likes}}
@@ -57,7 +61,11 @@
                             {{challenge.Poster}}
                         </div>
                     </div>
-                    <div class="col-10">
+                    {% if challenge.Sponsored == 1 %}
+                        <div class="col-10">
+                    {% elif challenge.Sponsored == 0 %}
+                        <div class="col-11">
+                    {%  endif %}
                         <div class="row">
                             <h3 class="text-left">{{challenge.Title}}</h3>
                         </div>
@@ -65,11 +73,13 @@
                             {{challenge.Description}}
                         </div>
                     </div>
-                    <div class="col-1">
-                        <div class="row justify-content-center">
-                            <img src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                    {% if challenge.Sponsored == 1 %}
+                        <div class="col-1">
+                            <div class="row justify-content-center">
+                                <img src="/static/img/SponsorIconVertical.svg" style="width:3.5em;height:6em">
+                            </div>
                         </div>
-                    </div>
+                    {% endif%}
                     <div class="col-1 offset-11" style="padding:1.25rem">
                         <div class="row justify-content-center">
                             <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
@@ -87,7 +97,11 @@
                     <div class="card-body row">
                         <div class="col-2">
                             <div class="row justify-content-center">
-                                <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                                {% if recipeLiked == 1 %}
+                                    <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                                {% elif recipe.Liked == 0 %}
+                                    <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                                {% endif %}
                             </div>
                             <div class="row justify-content-center">
                                     {{recipe.Likes}}
