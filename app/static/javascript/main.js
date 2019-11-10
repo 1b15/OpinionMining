@@ -38,3 +38,25 @@ function like(ID, img){
 		});
 
 }
+
+function likevote(ID, img){
+  $.ajax({
+			type: 'POST',
+			url: 'challengeLike/'+ID,
+		}).done(function(data) {
+		    var hidden = $('#inputnr'+ID);
+		    if(hidden.val() == 0){
+                hidden.val(1);
+                img.setAttribute('src', '/static/img/HeartLikeFull.svg');
+            }
+            else{
+                hidden.val(0);
+                img.setAttribute('src', '/static/img/HeartLikeEmpty.svg');
+            }
+			console.log('done: '+data);
+		}).fail(function(data) {
+			// Aktionen bei einem Fehler
+			console.log('fail: '+data);
+		});
+
+}

@@ -26,12 +26,16 @@
         <div class="row my-3">
             <div class="col-8 offset-2 card my-1">
                 <div class="row py-1 align-items-center">
-                    <h5 class="col-9">
+                    <h5 class="col-9" style="font-size:0.8em">
                         {{challenge.Title}}
                     </h5>
-                    <a class=" col-1 navbar-brand" href="#">
-                        <img onmouseover="hoverHeartLike(this);" onmouseout="unhoverHeartLike(this);" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
-                    </a>
+                    {% if challenge.Liked == 1 %}
+                        <input type="hidden" value="1" id="inputnr{{ challenge.id }}" >
+                        <img onclick="likevote({{ challenge.id }},this)" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                    {% elif challenge.Liked == 0 %}
+                        <input type="hidden" value="0" id="inputnr{{ challenge.id }}" >
+                        <img onclick="likevote({{ challenge.id }},this)" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                    {% endif %}
                 </div>
             </div>
         </div>

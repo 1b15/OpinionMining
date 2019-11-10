@@ -5,7 +5,13 @@
         <div class="row card-body">
             <div class="col-2">
                 <div class="row justify-content-center">
-                    <img src="/static/img/HeartLike.svg" style="width:2em; height:2em;">
+                    {% if challenge.Liked == 1 %}
+                        <input type="hidden" value="1" id="inputnr{{ challenge.id }}" >
+                        <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeFull.svg" style="width:2em; height:2em;">
+                    {% elif challenge.Liked == 0 %}
+                        <input type="hidden" value="0" id="inputnr{{ challenge.id }}" >
+                        <img onclick="like({{ challenge.id }},this)" src="/static/img/HeartLikeEmpty.svg" style="width:2em; height:2em;">
+                    {% endif %}
                 </div>
                 <div class="row justify-content-center">
                         ChallengeLikes

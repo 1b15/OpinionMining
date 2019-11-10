@@ -36,7 +36,7 @@ def challenge():
 def challengeLike(challenge_id):
     if request.method == 'POST':
         user_id = login(request.remote_addr)
-        post_challengeLike(user_id, challenge_id)
+        post_challengeLike(int(user_id), int(challenge_id))
     return jsonify(code='200')
 
 @app.route('/recipe/<challenge_id>', methods = ['POST'])

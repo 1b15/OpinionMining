@@ -48,14 +48,15 @@ def get_challenges(user_id):
 
     #Persönlicher Like
     liked = pd.DataFrame({'id': challenges.index.values, 'Liked': [0] * len(challenges.index.values)}).set_index('id')
-    LikeIds = challengeLikes[challengeLikes['User'] == user_id]['Challenge']
+    LikeIds = challengeLikes[challengeLikes['User'] == user_id]['Challenge'].astype(int)
     liked.at[LikeIds, 'Liked'] = 1
 
     #Likes
+    challengeLikes['Challenge'] = challengeLikes['Challenge'].astype(int)
     sortedIds = challengeLikes.groupby('Challenge').count().sort_values(by='User', ascending=False)
 
     #Challenges mit 0 Likes
-    missingChallenges = challenges[~challenges.index.isin(challengeLikes.index.values)]
+    missingChallenges = challenges[~challenges.index.isin(sortedIds.index.values)]
     missingIds = pd.DataFrame({'id': missingChallenges.index.values, 'User': [0] * len(missingChallenges)}).set_index('id')
     sortedIds = pd.concat([sortedIds, missingIds])#.iloc[pageNumber * 10:(pageNumber + 1) * 10]
 
